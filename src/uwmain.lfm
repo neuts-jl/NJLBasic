@@ -1,0 +1,38 @@
+object frmMain: TfrmMain
+  Left = 399
+  Height = 600
+  Top = 250
+  Width = 800
+  Caption = 'frmMain'
+  ClientHeight = 600
+  ClientWidth = 800
+  DesignTimePPI = 120
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  OnShow = FormShow
+  LCLVersion = '3.6.0.0'
+  object PaintBox: TPaintBox
+    Left = 0
+    Height = 600
+    Top = 0
+    Width = 800
+    Align = alClient
+  end
+  object Edit1: TEdit
+    Left = 164
+    Height = 28
+    Top = 112
+    Width = 100
+    AutoSize = False
+    AutoSelect = False
+    TabOrder = 0
+    Text = 'Edit1'
+  end
+  object TimerInit: TTimer
+    Enabled = False
+    OnTimer = TimerInitTimer
+    Left = 109
+    Top = 48
+  end
+end
