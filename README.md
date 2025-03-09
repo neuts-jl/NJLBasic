@@ -1,4 +1,4 @@
-# LuaToExe
+# NJLBasic
 
 I wrote NJLBasic out of nostalgia, it can interpret sources from the 80s, 
 it also has a modern syntax, a graphical mode. It has a very interesting 
