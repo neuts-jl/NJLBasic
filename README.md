@@ -6,9 +6,9 @@ interactive mode. It can create very quickly an executable containing all
 the files of an NJBasic application. This executable will be autonomous, 
 it will include all the resources of the application.
 3 versions are available
-NJLBasicC: pure console
-NJLBasicAC: for ANSI compatible consoles
-NJLBasicW: graphical mode 
+ - NJLBasicC: pure console
+ - NJLBasicAC: for ANSI compatible consoles
+ - NJLBasicW: graphical mode 
 
 ## Dependencies
 Compiled under LAZARUS with my lib [RuntimeResources](https://github.com/neuts-jl/RuntimeResources)
