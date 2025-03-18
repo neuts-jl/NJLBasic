@@ -1,0 +1,6 @@
+'ON ERROR GOTO 0
+ A=10
+ B=0
+ C=A/B
+ PRINT err
+ PRINT "FIN"

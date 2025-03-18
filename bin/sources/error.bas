@@ -1,0 +1,4 @@
+A=10
+B=0
+C=A/B
+PRINT A
