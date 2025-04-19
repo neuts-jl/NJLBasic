@@ -4,6 +4,9 @@
    Author      : NEUTS JL
    License     : GPL (GNU General Public License)
    Date        : 01/03/2025
+   Udpate      :
+
+   -- V1.0.1 18/04/2025 Add help command, fixes minors bugs
 
    Description : Basic interpreter for NJLBasic
 
@@ -36,13 +39,14 @@ uses
   Base64,
   LConvEncoding,
   process,
+  uhelp,
   ucustomconsole,
   utokenizer,
   uexpression,
   uresourceexe;
 
 const
-  KVersion = 'V1.0.0';
+  KVersion = 'V1.0.1';
 
   Black = 0;
   Red = 1;
@@ -133,6 +137,7 @@ type
 
   TBasicInterpreter = class
   private
+    FHelp:THelp;
     FConsole: TCustomConsole;
     FLineToEdit: string;
     FNLineToCont: integer;
@@ -198,6 +203,7 @@ type
     procedure DoLocate;
     procedure DoSleep;
     procedure DoEdit;
+    procedure DoHelp;
     function IsBase64(const S: string): boolean;
     function ObfuscateSource(const Source, Key: string): string;
     function ClarifySource(const Source, Key: string): string;
@@ -325,6 +331,8 @@ begin
   FOnError := '';
   FTrace := False;
   FMode := bmStopped;
+  FHelp:=THelp.Create;
+  FHelp.LoadFromFile(ExtractFilePath(ParamStr(0))+'NJLBasic.help');
   FExpr := TExpressionParser.Create;
   FExpr.Tokenizer.EolCar := '''';
   FProg := TStringList.Create;
@@ -350,6 +358,7 @@ end;
 
 destructor TBasicInterpreter.Destroy;
 begin
+  FHelp.Free;
   FFileInfos.Free;
   FSubPrograms.Free;
   FGosubStack.Free;
@@ -1320,7 +1329,7 @@ var
   VarName, InputValue: string;
 begin
   Token := FProgTokenizer.GetNextToken;
-  if Token.Value <> 'INPUT' then
+  if UpperCase(Token.Value) <> 'INPUT' then
     raise Exception.Create('INPUT excepted');
   Token := FProgTokenizer.GetNextToken;
   if Token.Value <> '#' then
@@ -1887,6 +1896,25 @@ begin
   FLineToEdit := IntToStr(NLine) + ' ' + FProg[APC];
 end;
 
+procedure TBasicInterpreter.DoHelp;
+//HELP [topic]
+var
+  Token: TToken;
+  Text,Topic:string;
+begin
+  Token := FProgTokenizer.GetNextToken;
+  Topic:=FProgTokenizer.GetRemainToken();
+  if Token.Value='' then
+    Text:=FHelp.GetCategories
+  else
+  begin
+    Text:=FHelp.GetCategory(Topic);
+    if Text='' then
+      Text:=FHelp.GetHelp(Topic);
+  end;
+  Console.Println(TrimRight(Text));
+end;
+
 procedure TBasicInterpreter.DoNew;
 //NEW
 begin
@@ -1936,6 +1964,7 @@ begin
     if pos('temp',LowerCase(FileName))>0 then
       DeleteFile(FileName);
   end;
+  DoNumProg;
 end;
 
 procedure TBasicInterpreter.DoSave;
@@ -2239,6 +2268,8 @@ begin
       DoSleep;
     'EDIT':
       DoEdit;
+    'HELP':
+      DoHelp;
     else
     begin
       if not ExtraCommand(Command) then
@@ -2284,7 +2315,8 @@ begin
   PrintCopyRight;
   PrintFreeMem;
   Console.Println;
-  Console.Println('Quit or system for quit NJLBASIC');
+  Console.Println('Type Quit or system for quit NJLBASIC');
+  Console.Println('Type Help for help');
   Console.Println('Ready.');
   Console.Println;
   while FMode <> bmSystem do
@@ -2302,7 +2334,7 @@ begin
         NLine := StrToInt(Token.Value);
         Token := FTmpTokenizer.GetNextToken;
         Line := FTmpTokenizer.GetRemainToken;
-        if Line[1] = ' ' then
+        if (Line <> '') and (Line[1] = ' ') then
           Delete(Line, 1, 1);
         ix := NLineToPC(NLine);
         if ix > -1 then
@@ -2381,12 +2413,11 @@ function TBasicInterpreter.IsBase64(const S: string): boolean;
 var
   i: integer;
 begin
-  Result := False;
   for i := 1 to Length(S) do
   begin
     if not (S[i] in ['A'..'Z', 'a'..'z', '0'..'9', '+', '/', '=',
       '-', '_', #10, #13]) then
-      Break;
+      exit(False);
   end;
   Result := True;
 end;

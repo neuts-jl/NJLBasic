@@ -209,7 +209,7 @@ procedure TBasicGraphic.DoImage;
 //IMAGE CLEAR ["imagename"]
 var
   Ins, FileName, ImageName: string;
-  x, y, w, h, img: integer;
+  x, y, w, h: integer;
   Token: TToken;
 begin
   Ins := UpperCase(FProgTokenizer.GetNextToken.Value);

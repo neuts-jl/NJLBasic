@@ -1,0 +1,143 @@
+Instructions|CALL procedure|Calls an external procedure.|CALL myProcedure
+Instructions|CLEAR|Clears the memory of the currently executing program.|CLEAR
+Instructions|CLS|Clears the screen.|CLS
+Instructions|CONT|CONT resumes the program after the STOP instruction.|nan
+Instructions|DEF FN|Declares a user-defined function.|DEF FN SQRT(X) = X * X
+Instructions|DIM|Declares an array.|DIM A(10)
+Instructions|DO ... LOOP UNTIL|Loop executed at least once.|DO ... LOOP
+Instructions|EDIT <line>|Allows you to edit or modify the program from the command line.|EDIT 10
+Instructions|END|Terminates program execution.|END
+Instructions|FILES "mask"|Displays the list of files, the default mask is "*.bas"|FILES
+Instructions|FOR ... NEXT|Performs a loop with a counter.|FOR I = 1 TO 5 PRINT I NEXT
+Instructions|GOSUB ... RETURN|Calls a subroutine (line or label) and returns to it with `RETURN`.|GOSUB 200 ...200 REM Subroutine RETURN
+Instructions|GOTO <line>|Jumps to a specific line or label in the program.|GOTO 100
+Instructions|IF ... THEN…ELSE..END IF|Complete conditional structure.|IF condition THEN ... ELSE ... END IF
+Instructions|INPUT ["prompt",] response|Requests user input.|INPUT "Enter a number: ", A
+Instructions|INKEY()|Reads a keyboard key, returns 2 characters, the first is the keyboard code, the second is the converted character|
+Instructions|LET var=expression|Defines a variable with an expression.|LET X = 10
+Instructions|LIST [start [TO end]]|Displays the program source code.|LIST [100[TO 200]]
+Instructions|LOAD "filename"|Loads a program from a file.|LOAD "myprogram.bas"
+Instructions|NEW|Erases the current program and starts an empty program.|NEW
+Instructions|PRINT|Displays information or results on the screen.|PRINT "Hello, world!"
+Instructions|REM|Adds a comment (not executed). ' comments out the rest of the line.|REM This is a comment
+Instructions|RENUM [start[, step]]|Renumbers the program lines. (Default 10,10)|RENUM 10,10
+Instructions|RUN [line]|Executes the program from a specific line.|RUN 100
+Instructions|SAVE "filename" [,NUMBERS]|Saves the current program to a file. (NUMBERS numbers the file]|SAVE "myprogram.bas"
+Instructions|STOP|Stop the program for debugging, see CONT. Displays a "Break in line XX" message.|nan
+Instructions|SUB ... END SUB|Subroutine declaration.|SUB mySub ... END SUB
+Instructions|SYSTEM|Executes a system command.|SYSTEM
+Instructions|TROFF|(Trace OFF) Turns off tracing mode, stopping the display of line numbers.|TROFF
+Instructions|TRON|(Trace ON) Turns on program tracing mode. Each executed line displays its number on the screen.|TRON
+Instructions|UBOUND(tab,n)|Returns the high index of an array dimension.|nan
+Instructions|WHILE … WEND|Begins a conditional loop.|WHILE condition ... WEND
+Math|ABS(x)|Absolute value of x|PRINT ABS(-5) → 5
+Math|AVG(A,B,C,...)|Returns the average|PRINT AVG(2,5,8,12) → 6.75
+Math|COS(x)|Cosine of x in radians|PRINT COS(3.14)
+Math|E|Returns the value of Exp of 1|PRINT E
+Math|EXP(x)|Exponential e^x|PRINT EXP(1) → 2.71828
+Math|LOG(x)|Natural logarithm (base e)|PRINT LOG(10)
+Math|MAX(a,b)|Returns the value of the maximum*|PRINT MAX(1,3.5) → 3.5
+Math|MIN(a,b)|Returns the value of the minimum|PRINT MIN(1,3.5) → 1
+Math|PI|Returns the value of PI|PRINT PI
+Math|POWER(base,exponent)|Returns the power of the base exponent|PRINT POWER(2,3) → 8
+Math|RND()|Random number between 0 and 1|PRINT RND()
+Math|SGN(x)|Sign of x (-1, 0, or 1)|PRINT SGN(-10) → -1
+Math|SIN(x)|Sine of x in radians|PRINT SIN(1.57)
+Math|SQR(x)|Square root of x|PRINT SQR(25) → 5
+Math|TAN(x)|Tangent of x in radians|PRINT TAN(0.785)
+Strings|ASC(str)|ASCII code of the first character|PRINT ASC("A") → 65
+Strings|CHR(x)|ASCII character|PRINT CHR(65) → A
+Strings|INSTR([start,] str, substr)|Position of substr in str and from start (default 1)|PRINT INSTR("HELLO", "L") → 3
+Strings|LCASE(str)|Lowercase|PRINT LCASE("HELLO") → hello
+Strings|LEFT(str, n)|First n characters|PRINT LEFT("HELLO", 2) → HE
+Strings|LEN(str)|String length|PRINT LEN("HELLO") → 5
+Strings|LTRIM(str)|Trims leading spaces of the string.|PRINT LTRIM(" hello ") → "HELLO "
+Strings|MID(str, start, len)|Substring|PRINT MID("HELLO", 2, 3) → ELL
+Strings|RIGHT(str, n)|The last n characters|PRINT RIGHT("HELLO", 2) → LO
+Strings|RTRIM(str)|Removes spaces from the right (trailing) of the string.|PRINT RTRIM(" hello ") → " HELLO"
+Strings|SPACE(n)|String of n spaces|PRINT SPACE(5) ​​→ " "
+Strings|STRING(n,"char")|Generates a string consisting of the same character repeated multiple times.|PRINT SPACE(8,"-") → " --------"
+Strings|TRIM(str)|Removes spaces from the left and to the right of the string.|PRINT TRIM("hello") → "HELLO"
+Strings|UCASE(str)|Uppercase|PRINT UCASE("hello") → HELLO
+Strings|REPLACE(Text, Find, ReplaceWith)|Replaces in a string Text, find with ReplaceWith|PRINT REPLACE("Hello world","Hello","Bonjour") → "Bonjour world"
+Conversions|CINT(x)|Converts to an integer.|PRINT CINT(3.7) → 4
+Conversions|INT(x)|Lower integer part|PRINT INT(3.7) → 3
+Conversions|STR(x)|Converts to a string.|PRINT STR(123) → " 123"
+Conversions|VAL(str)|Converts a string to a number.|PRINT VAL("123.45") → 123.45
+File|OPEN filename FOR mode AS #n|Opens a file with a channel number (#1 to #255), mode=INPUT, OUTPUT, APPEND or BINARY|OPEN "data.txt" FOR INPUT AS #1
+File|EOF(n)|Indicates the end of a file opened with OPEN.|IF EOF(1) THEN ...
+File|LINE INPUT #n, var|Reads an entire line.|LINE INPUT #1, MYVAR
+File|INPUT #n, var|Reads a line from a file.|INPUT #1, MYVAR
+File|WRITE #n, var|Writes to a file (with field separators).|WRITE #1, A$
+File|CLOSE #n|Closes the open file.|CLOSE #1
+File|COPYFILE source, destination, [ overwrite ]|Copies a file|COPYFILE "FILE1.TXT", "FILE2.TXT", true
+File|KILL "File"|Delete a file.|KILL "filename.txt"
+File|NAME "OldFile" AS "NewFile"|Rename a file|NAME "file.old" "file.new"
+File|DIR()|List the next file|DIR()
+File|DIR(mask)|List a directory|DIR("C:\*.*')
+File|CURDIR()|Return the current directory|PRINT CURDIR()
+File|CHDIR "dir"|Change the current directory|CHDIR "c:\users"
+File|MKDIR "dir"|Create a directory|MKDIR "directory"
+File|RMDIR "dir"|Delete a directory|RMDIR "directory"
+File|FILEEXISTS(“filename”)|Check the existence of a file|
+File|DIREXISTS(“dir”)|Checks for the existence of a directory|
+File|FILELEN(“filename”)|Returns the size of a file|PRINT FILELEN("myfile.txt")
+Screens|CLS|Clears the screen|CLS
+Screens|COLOR fg [,bg]|Text color, Background color (optional)|COLOR 14, 1 'Yellow text on a blue background
+Screens|CURSOR_OFF|Hide the cursor|CURSOR OFF
+Screens|CURSOR_ON|Show the cursor|CURSOR ON
+Screens|CURSOR_NORMAL|Display a line cursor|CURSOR NORMAL
+Screens|CURSOR_BLOCK|Display a block cursor|CURSOR BLOCK
+Screens|LOCATE L,C|Position the cursor|LOCATE 10, 5 PRINT "Text at line 10, column 5"
+Screens|CONSOLEX()|Returns the number of console columns|
+Screens|CONSOLEY()|Returns the number of console lines|
+Graphics|LOCATE L,C|Cursor Positioning|LOCATE 10, 5 PRINT "Text at line 10, column 5"
+Graphics|IMAGE_LOAD “img1,”image1.png”|Loads an image|IMAGE LOAD img, “sprite.png”
+Graphics|IMAGE_DRAW “img1”, x, y [,w,h]|Displays an image in x,y|IMAGE DRAW img,100,200
+Graphics|IMAGE_CLEAR “img1”|Deletes the image|IMAGE FREE img
+Graphics|IMAGE_CLEAR|Deletes all images|
+Graphics|IMAGEX(“img1”)|Return x of image|
+Graphics|IMAGEY(“img1”)|Return x of image|
+Graphics|DRAW_TEXT x, y, “text” [, “fontname”,fontsize,fontstyle]|Displays text in graphic|
+Graphics|DRAW_LINE x1, y1, x2, y2[, width, penstyle]|Draws a line|
+Graphics|DRAW_RECTANGLE x1, y1, x2, y2[, width, penstyle, fill]|Draws a rectangle|
+Graphics|DRAW_CIRCLE x, y, r [, width, penstyle, fill]|Draws a circle|
+Graphics|DRAW_ELLIPSE x1, y1, x2, y2[, width, penstyle, fill]|Draws an ellipse|
+Graphics|DRAW_WAIT_FRAME “milliseconds”|Waits x milliseconds and refreshes the screen|WAIT FRAME 50
+Graphics|SCREENX()|Returns the screen width in pixels|
+Graphics|SCREENY()|Returns the screen height in pixels|
+Graphics|MOUSEX()|Returns the mouse position in x|
+Graphics|MOUSEY()|Returns the mouse position in y|
+Graphics|MOUSEBUTTON()|Returns the button number|
+Sprites|SPRITE_CREATE "name", "image.png", animations, frames|Creates a sprite from an image with a specified number of animation lines and frames per line.|SPRITE "player", "player_spritesheet.png", 4, 6 (4 animations, 6 frames per animation)
+Sprites|SPRITE_CLEAR|Deletes all sprites and frees the memory, or deletes the "player" sprite.|
+Sprites|SPRITE_CLEAR "player"||
+Sprites|SPRITE_ANIMATION_ADD "sprite", "name", animation_index, start_frame, end_frame, speed, loop|Adds an animation to the sprite by specifying the animation line index and the frame range to use.|SPRITE ANIMATION ADD "player", "walk", 0, 0, 5, 0.1, true (animation "walk" on line 0, frames 0 to 5)
+Sprites|SPRITE_ANIMATION_START "sprite", “animation_name"|Starts an animation on a given sprite.|SPRITE ANIMATION START "player", "walk"
+Sprites|SPRITE_POSITION "sprite", x, y|Sets the sprite's position to specific coordinates.|SPRITE POSITION "player", 10, 5
+Sprites|SPRITE_MOVE "sprite", sx,sy|Moves the sprite at speeds sx and sy|SPRITE MOVE "player", 100.50
+Sprites|SPRITE_HIDE "sprite"|Hides a sprite from the screen.|SPRITE HIDE "player"
+Sprites|SPRITE_SHOW "sprite"|Shows a sprite on the screen.|SPRITE SHOW "player"
+Sprites|SPRITE(“info”,”player”[,”animation”])|Returns the following information when info = WIDTH, HEIGHT, X, Y, VISIBILITY, EDGE_HIT, COLLIDE, ANIM_END, MOUSE_BUTTON
+Medias|MEDIA_PLAY "alias","filename"|Plays a media file (WAV, MIDI, MP3, etc.)|MEDIA PLAY "A1","background.mp3"
+Medias|MEDIA_PAUSE "alias"|Pauses a media file|MEDIA PAUSE "A1"
+Medias|MEDIA_RESUME "alias"|Continues playing a media file|MEDIA RESUME "A1"
+Medias|MEDIA_STOP "alias"|Stops and closes a media file|MEDIA STOP "A2"
+Systems|COMMAND|Reads command-line arguments.|PRINT COMMAND
+Systems|ENVIRON(n)|Reads environment variable n.|PRINT ENVIRON("PATH")
+Systems|MEMORY|Print free memory|MEMORY → "290789 Bytes free"
+Systems|DATE year,month,day|Returns the date in variables|DATE year,month,day
+Systems|DATE()|Returns the date|PRINT DATE() → 12/31/2025
+Systems|TIME Hours,Minutes,Seconds|Returns the time in variables|TIME Hours,Minutes,Seconds
+Systems|TIME()|Returns the time|PRINT TIME() → 23:58:35
+Systems|TIMER()|Gets the number of seconds since the program started|PRINT TIMER() → 29559890
+Systems|SHELL command|Executes a system (DOS) command.|SHELL "DIR"
+Systems|SLEEP “milliseconds”|WAIT x milliseconds|SLEEP 100
+Errors|ERR|Contains the error code, reset to 0 for each successful instruction.|PRINT ERR → 1
+Errors|ERL|Contains the line number in error.|PRINT ERL → 100
+Errors|ERROR|Provides a description of the last error.|PRINT ERROR → "Division by zero"
+Errors|ON_ERROR_GOTO_0|Disables error handling.|nan
+Errors|ON_ERROR_GOTO label|The program jumps to the specified label on error.|
+Errors|RESUME|Returns to the instruction that caused the error.|
+Errors|RESUME_NEXT|Continues to the next instruction.|
+

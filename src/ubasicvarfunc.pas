@@ -106,6 +106,7 @@ end;
 
 var
   Files: TSearchRec;
+  FilesStarted:boolean;
 
 function DoDir(Parser: TExpressionParser): TValue;
 var
@@ -118,14 +119,17 @@ begin
   Parser.Tokenizer.UnreadToken;
   if Token.Value = ')' then
   begin
-    if FindNext(Files) = 0 then
+    if FilesStarted and (FindNext(Files) = 0) then
       Result.StrValue := Files.Name;
   end
   else
   begin
     Mask := Parser.GetStrValue;
     if FindFirst(Mask, faAnyFile, Files) = 0 then
+    begin
+      FilesStarted := True;
       Result.StrValue := Files.Name;
+    end;
   end;
 end;
 

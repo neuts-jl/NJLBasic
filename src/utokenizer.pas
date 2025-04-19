@@ -190,9 +190,9 @@ begin
   if AEnd=0 then
     AEnd:=Length(Source);
   if AStart<>0 then
-    Result:=Copy(Source,AStart,AEnd-AStart)
+    Result:=Trim(Copy(Source,AStart,AEnd-AStart))
   else
-    Result:=Copy(Source,FToken.Index,AEnd);
+    Result:=Trim(Copy(Source,FToken.Index,AEnd));
 end;
 
 function TTokenizer.GetNextToken: TToken;
