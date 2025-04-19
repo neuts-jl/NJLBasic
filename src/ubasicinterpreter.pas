@@ -6,7 +6,7 @@
    Date        : 01/03/2025
    Udpate      :
 
-   -- V1.0.1 18/04/2025 Add help command, fixes minors bugs
+     -- V1.0.2 18/04/2025 Add help command, fixes minors bugs
 
    Description : Basic interpreter for NJLBasic
 
@@ -46,7 +46,7 @@ uses
   uresourceexe;
 
 const
-  KVersion = 'V1.0.1';
+  KVersion = 'V1.0.2';
 
   Black = 0;
   Red = 1;
